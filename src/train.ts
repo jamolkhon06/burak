@@ -3,7 +3,7 @@
     ~ Naming standarts
         function, method, variable => CamelCase
         class => PascalCase
-        folder => KebabCase
+        folder, file => KebabCase
         css classes => SnakeCase
     ~ Error handling
     ~ 
