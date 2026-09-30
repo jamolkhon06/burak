@@ -1,7 +1,20 @@
+// Task-P
+// Parametr sifatida yagona object qabul qiladigan function yozing. Qabul qilingan objectni nested array sifatida convert qilib qaytarsin MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+function objectToArray(obj: any) {
+    let newObj: any[] = [];
+    for(let key in obj) {
+        newObj.push([key, obj[key]]);
+    }
+    return newObj
+}
+const result = objectToArray({a: 10, b: 20});
+console.log(result);
+
+
 // Task-O
 // Shunday function yozing va u har xil qiymatlardan iborat array qabul qilsin. Va array ichidagi sonlar yig'indisini hisoblab chiqgan javobni qaytarsin. MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]); return 45 Yuqoridagi misolda array tarkibida faqatgina ikkita yagona son mavjud bular 10 hamda 35 Qolganlari nested bo'lib yoki type'lari number emas.
 
-function calculateSumOfNumbers(arr: any[]): number {
+/* function calculateSumOfNumbers(arr: any[]): number {
     let result: number = 0;
     arr.forEach(item => {
         if(typeof(item) === 'number') {
@@ -11,7 +24,7 @@ function calculateSumOfNumbers(arr: any[]): number {
     return result
 }
 const result = calculateSumOfNumbers([10, "10", {son: 10}, true, 35]);
-console.log(result)
+console.log(result) */
 
 /* Project Standarts
     ~ Logging standarts
