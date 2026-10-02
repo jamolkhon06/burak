@@ -10,7 +10,8 @@ mongoose
             console.log("Successfully connected to MongoDB")
             const PORT = process.env.PORT ?? 3003;
             app.listen(PORT, () => {
-                console.log(`The server is running successfully on PORT: ${PORT}`)
+                console.info(`The server is running successfully on PORT: ${PORT}`);
+                console.info(`Admin Project is running on http://localhost:${PORT}/admin \n`)
             })
         })
         .catch(err => console.error(`ERROR on connection to MongoDB: ${err}`))
