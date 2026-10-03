@@ -1,6 +1,24 @@
+// Task-R
+// Shunday function yozing, u string parametrga ega bo'lsin. Agar argument sifatida berilayotgan string, "1 + 2" bo'lsa, string ichidagi sonlarin yig'indisni hisoblab, number holatida qaytarsin MASALAN: calculate("1 + 3"); return 4; 1 + 3 = 4, shu sababli 4 natijani qaytarmoqda.
+
+function calculate(str: string): number {
+    let nums: string[] = str.split(" ")
+    const numbers: string = "1234567890"
+    let total: number = 0;
+    
+    for(let i = 0; i <= nums.length; i++) {
+        if(numbers.includes(nums[i])) {
+            total += Number(nums[i])
+        }
+    }
+    return total
+}
+const result = calculate("1 + 3")
+console.log(result)
+
 // Task-Q
 // Shunday function yozing, u 2 ta parametrga ega bo'lib, birinchisi object, ikkinchisi string bo'lsin. Agar qabul qilinayotgan ikkinchi string, objectning biror bir propertysiga mos kelsa, 'true', aks holda mos kelmasa 'false' qaytarsin. MASALAN: hasProperty({ name: "BMW", model: "M3" }, "model"); return true; Ushbu misolda, 'model' string, objectning propertysiga mos kelganligi uchun 'true' natijani qaytarmoqda
-function hasProperty(obj: any, str: string): boolean {
+/* function hasProperty(obj: any, str: string): boolean {
     for(let key in obj) {
         if(key == str) {
             return true
@@ -9,7 +27,7 @@ function hasProperty(obj: any, str: string): boolean {
     return false
 }
 const result = hasProperty({ name: "BMW", model: "M3" }, "model");
-console.log(result)
+console.log(result) */
 
 // Task-P
 // Parametr sifatida yagona object qabul qiladigan function yozing. Qabul qilingan objectni nested array sifatida convert qilib qaytarsin MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
