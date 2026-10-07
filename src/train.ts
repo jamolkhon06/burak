@@ -1,7 +1,25 @@
+// Task-S
+// Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin MASALAN: missingNumber([3, 0, 1]) return 2
+function missingNumber(arr: number[]): number {
+    let arrLength: number = arr.length;
+    let sum1: number = arrLength * (arrLength + 1) / 2;
+    let sum2: number = 0;
+
+    for (let num of arr) {
+        sum2 += num;
+    }
+
+    return sum1 - sum2;
+}
+
+const result = missingNumber([3, 0, 1]);
+console.log(result); // 2
+
+
 // Task-R
 // Shunday function yozing, u string parametrga ega bo'lsin. Agar argument sifatida berilayotgan string, "1 + 2" bo'lsa, string ichidagi sonlarin yig'indisni hisoblab, number holatida qaytarsin MASALAN: calculate("1 + 3"); return 4; 1 + 3 = 4, shu sababli 4 natijani qaytarmoqda.
 
-function calculate(str: string): number {
+/* function calculate(str: string): number {
     let nums: string[] = str.split(" ");
     const numbers: string = "1234567890";
     let total: number = 0;
@@ -14,7 +32,7 @@ function calculate(str: string): number {
     return total;
 }
 const result = calculate("1 + 3");
-console.log(result);
+console.log(result); */
 
 // Task-Q
 // Shunday function yozing, u 2 ta parametrga ega bo'lib, birinchisi object, ikkinchisi string bo'lsin. Agar qabul qilinayotgan ikkinchi string, objectning biror bir propertysiga mos kelsa, 'true', aks holda mos kelmasa 'false' qaytarsin. MASALAN: hasProperty({ name: "BMW", model: "M3" }, "model"); return true; Ushbu misolda, 'model' string, objectning propertysiga mos kelganligi uchun 'true' natijani qaytarmoqda
