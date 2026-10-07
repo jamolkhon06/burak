@@ -28,10 +28,10 @@ class MemberService {
     }
 
     public async login(input: LoginInput): Promise<Member> {
-        const member = await this.memberModel.findOne({memberNick: input.memberNick}, {memberNick: 1, memberPassword: 1}).exec();
+        const member = await this.memberModel.findOne({memberNick: input.memberNick}, {memberNick: 1, memberPassword: 1}).exec(); // second argument is a projection;; it asks the query to return only memberNick and memberPassword.
         if(!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK)
 
-        const isMatch = await bcrypt.compare(input.memberPassword, member.memberPassword);
+        const isMatch = await bcrypt.compare(input.memberPassword, member.memberPassword); // Compares the submitted password with the stored hash. It does not decrypt the hash; bcrypt checks whether they match.
 
         if(!isMatch) {
             throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD)

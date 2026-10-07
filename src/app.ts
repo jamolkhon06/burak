@@ -32,9 +32,9 @@ app.use(
         },
         store: store,
         resave: true,
-        saveUninitialized: true
+        saveUninitialized: true,
     })
-)
+); 
 
 // 3. Views
 app.set('views', path.join(__dirname, 'views'));

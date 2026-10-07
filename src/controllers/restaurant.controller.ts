@@ -82,7 +82,7 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
     }
 }
 
-restaurantController.logout = async (req: AdminRequest, res: Response) => {
+restaurantController.logout = (req: AdminRequest, res: Response) => {
     try {
         console.log('Logout Page');
         req.session.destroy(() => {
@@ -93,7 +93,7 @@ restaurantController.logout = async (req: AdminRequest, res: Response) => {
         res.redirect('/admin')
     }
 }
-restaurantController.checkAuthSession = async (req: AdminRequest, res: Response) => {
+restaurantController.checkAuthSession = (req: AdminRequest, res: Response) => {
     try {
         console.log('Check Authentication Page');
         if(req.session?.member) res.send(`<script>alert("Hi, ${req.session.member.memberNick}")</script>`)
