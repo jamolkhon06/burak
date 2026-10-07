@@ -86,6 +86,13 @@ Cookies:
     2. O'zini-o'zi destroy qila oladi
 */
 
+/* Validitions:
+    1. Frontend
+    2. Pipe
+    3. Backend
+    4. Database
+*/
+
 // Task-N
 // Shunday function yozing, u string qabul qilsin va string palindrom yani togri oqilganda ham, orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat qaytarsin. MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
 /* function palindromCheck(str: string): boolean {
