@@ -14,7 +14,9 @@ const productController: T = {}
 productController.getAllProducts = async (req: Request, res: Response) => {
     try {
         console.log('Get All Products Page');
-        res.render('products')
+        const data = await productService.getAllProducts();
+
+        res.render('products', { products: data })
     } catch(err) {
         console.error('Error, get all products', err);
         if(err instanceof Errors) res.status(err.code).json(err);
