@@ -3,7 +3,7 @@ import { T } from "../libs/types/common";
 import MemberService from '../models/Member.service';
 import { AdminRequest, LoginInput, MemberInput } from '../libs/types/member';
 import { MemberType } from '../libs/enums/member.enum';
-import Errors, { Message } from '../libs/Errors';
+import Errors, { HttpCode, Message } from '../libs/Errors';
 
 const memberService = new MemberService();
 
@@ -42,8 +42,11 @@ restaurantController.getLogin = (req: Request, res: Response) => {
 restaurantController.processSignup = async (req: AdminRequest, res: Response) => {
     try {
         console.log('Process Signup Page');
+        const file = req.file;
+        if(!file) throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG)
 
         const newMember: MemberInput = req.body;
+        newMember.memberImage = file?.path;
         newMember.memberType = MemberType.RESTAURANT;
 
         const result = await memberService.processSignup(newMember);
@@ -51,7 +54,7 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
         // Sessions authentication
         req.session.member = result;
         req.session.save(() => {
-            res.send(result);
+            res.redirect('/admin/product/all');
         });
     } catch(err) {
         console.error('Error, processSignup', err);
@@ -71,7 +74,7 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
         // Sessions authentication
         req.session.member = result;
         req.session.save(() => {
-            res.send(result);
+            res.redirect('/admin/product/all');
         });
     } catch(err) {
         console.error('Error, processLogin', err);
