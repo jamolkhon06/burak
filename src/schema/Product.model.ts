@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import { MemberStatus, MemberType } from '../libs/enums/member.enum';
 import { ProductSize, ProductStatus, ProductVolume } from '../libs/enums/product.enum';
 import { ProductCollection } from '../libs/enums/product.enum';
 
@@ -40,7 +39,6 @@ const productSchema = new Schema({
     },
     productDesc: {
         type: String,
-        required: true
     },
     productImages: {
         type: [String],
