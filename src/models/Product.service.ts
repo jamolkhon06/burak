@@ -1,6 +1,9 @@
 import { shapeIntoMongooseObjectId } from "../libs/config";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import { Product, ProductInput, ProductUpdateInput } from "../libs/types/product";
+// Product describes a product returned from the database.
+// ProductInput describes data for creating a product.
+// ProductUpdateInput describes data for updating a product.
 import ProductModel from "../schema/Product.model";
 
 class ProductService {
