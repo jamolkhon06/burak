@@ -1,1 +1,1 @@
-console.log("Frontend JavaScript ishga tushdi!")
+console.log("Basic frontend javascript file");
