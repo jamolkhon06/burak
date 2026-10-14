@@ -1,6 +1,23 @@
+// TASK V
+// Shunday function yozing, uni string parametri bo'lsin. Va bu function stringdagi har bir harfni o'zi bilan necha marotaba taktorlanganligini ko'rsatuvchi object qaytarsin. MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1} Yuqoridagi misolda, 'hello' so'zi tarkibida qatnashgan harflar necha marotaba takrorlangini bilan object sifatida qaytarilmoqda.
+
+function countChars(str: string): any {
+    const result: { [key: string]: number } = {};
+    for(let char of str) {
+        if(char in result) {
+            result[char]++
+        } else {
+            result[char] = 1
+        }
+    }
+    return result;
+}
+const result = countChars("hello");
+console.log(result);
+
 // Task-U
 // Shunday function tuzing, uni number parametri bo'lsin. Va bu function berilgan parametrgacha, 0'dan boshlab oraliqda nechta toq sonlar borligini aniqlab return qilsi. MASALAN: sumOdds(9) return 4; sumOdds(11) return 5; Yuqoridagi birinchi misolda, argument sifatida, 9 berilmoqda. Va 0'dan boshlab sanaganda 9'gacha 4'ta toq son mavjud. Keyingi namunada ham xuddi shunday xolat takrorlanmoqda.
-function sumOdds(num: number): number {
+/* function sumOdds(num: number): number {
     let count: number = 0;
     for(let i = 1; i < num; i++) {
         if(i % 2 !== 0) {
@@ -11,7 +28,7 @@ function sumOdds(num: number): number {
     return count
 }
 const result = sumOdds(9);
-console.log(result);
+console.log(result); */
 
 
 // Task-T
