@@ -11,7 +11,7 @@ function sumOdds(num: number): number {
     return count
 }
 const result = sumOdds(9);
-console.log(result)
+console.log(result);
 
 
 // Task-T
