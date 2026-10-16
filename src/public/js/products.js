@@ -22,7 +22,24 @@ $(function() {
         $(".dish-container").slideToggle(100);
         $("#process-btn").css("display", "flex");
     });
-})
+
+    $(".new-product-status").on("change", async (e) => {
+        const id = e.target.id;
+        const productStatus = $(`${id}.new-product-status`).val();
+
+        try {
+            const response = await axios.post(`/admin/product/${id}`, { productStatus: productStatus });
+            const result = response.data;
+            if(result.data) {
+                console.log("Product has been updated!");
+                $(".new-product-status").blur();
+            } else alert("Product update failed!");
+        } catch(err) {
+            console.error(err);
+            alert("Product update failed!")
+        }
+    });
+});
 
 function validateForm() {
     const productName = $(".product-name").val();
