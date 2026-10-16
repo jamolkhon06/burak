@@ -1,7 +1,7 @@
 import MemberModel from "../schema/Member.model";
 import { LoginInput, Member, MemberInput, MemberUpdateInput } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
-import { MemberType } from "../libs/enums/member.enum";
+import { MemberStatus, MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from 'bcryptjs';
 import { shapeIntoMongooseObjectId } from "../libs/config";
 
@@ -29,8 +29,11 @@ class MemberService {
     }
 
     public async login(input: LoginInput): Promise<Member> {
-        const member = await this.memberModel.findOne({memberNick: input.memberNick}, {memberNick: 1, memberPassword: 1}).exec(); // second argument is a projection;; it asks the query to return only memberNick and memberPassword.
+        const member = await this.memberModel.findOne({memberNick: input.memberNick, memberStatus: { $ne: MemberStatus.DELETE }}, { memberNick: 1, memberPassword: 1, memberStatus: 1 }).exec(); // second argument is a projection;; it asks the query to return only memberNick and memberPassword.
         if(!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK)
+        else if(member.MemberStatus === MemberStatus.BLOCK) {
+            throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER)
+        }
 
         const isMatch = await bcrypt.compare(input.memberPassword, member.memberPassword); // Compares the submitted password with the stored hash. It does not decrypt the hash; bcrypt checks whether they match.
 
