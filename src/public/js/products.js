@@ -23,9 +23,9 @@ $(function() {
         $("#process-btn").css("display", "flex");
     });
 
-    $(".new-product-status").on("change", async (e) => {
+    $(".new-product-status").on("change", async function(e) {
         const id = e.target.id;
-        const productStatus = $(`${id}.new-product-status`).val();
+        const productStatus = $(`#${id}.new-product-status`).val();
 
         try {
             const response = await axios.post(`/admin/product/${id}`, { productStatus: productStatus });
