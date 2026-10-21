@@ -1,27 +1,47 @@
+// Task-X
+// Shunday function yozing, uni object va string parametrlari bo'lsin. Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri necha marotaba takrorlanganlini sanab qaytarsin. Eslatma => Nested object'lar ham sanalsin MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2 Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.Funktsiya, shu ikkinchi argument 'model', birinchi argument object tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
+
+function countOccurrences(obj: any, key: string) {
+  let count = 0;
+
+  for (let k in obj) {
+    if (k === key) count++;
+
+    if (typeof obj[k] === "object") {
+      count += countOccurrences(obj[k], key);
+    }
+  }
+
+  return count;
+}
+const result = countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model');
+console.log(result)
+
+
 // Task-W
 // Shunday function yozing, u o'ziga parametr sifatida yagona array va number qabul qilsin. Siz tuzgan function arrayni numberda berilgan uzunlikda kesib bo'laklarga ajratgan holatida qaytarsin. MASALAN: chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3); return [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]; Yuqoridagi namunada berilayotgan array ikkinchi parametr 3'ga asoslanib 3 bo'lakga bo'linib qaytmoqda. Qolgani esa o'z holati qolyapti
 
-function chunkArray(arr: number[], arg: number): number[][] {
-  let newArr: number[][] = [];
-  let tempArr: number[] = [];
-  
-  for(let i = 0; i < arr.length; i++) {
-    tempArr.push(arr[i]);
-    
-    if(tempArr.length === arg) {
-      newArr.push(tempArr);
-      tempArr = []
-    } 
-  }
-  
-  if (tempArr.length > 0) {
-    newArr.push(tempArr);
-  }
-  
-  return newArr;
+/* function chunkArray(arr: number[], arg: number): number[][] {
+    let newArr: number[][] = [];
+    let tempArr: number[] = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        tempArr.push(arr[i]);
+
+        if (tempArr.length === arg) {
+            newArr.push(tempArr);
+            tempArr = []
+        }
+    }
+
+    if (tempArr.length > 0) {
+        newArr.push(tempArr);
+    }
+
+    return newArr;
 }
 const result = chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3);
-console.log(result);
+console.log(result); */
 
 
 // TASK V
@@ -91,7 +111,7 @@ console.log(result); // 2 */
     let nums: string[] = str.split(" ");
     const numbers: string = "1234567890";
     let total: number = 0;
-    
+
     for(let i = 0; i <= nums.length; i++) {
         if(numbers.includes(nums[i])) {
             total += Number(nums[i])
@@ -151,22 +171,22 @@ console.log(result) */
         folder, file => KebabCase
         css classes => SnakeCase
     ~ Error handling
-    ~ 
+    ~
 */
 
-/* 
+/*
     Traditional API
     Rest API
     GraphQL API
     ...
 */
 
-/* 
+/*
 Traditional FD => BSSR(admin) => EJS
 Modern FD => SPA(user) => REACT
 */
 
-/* 
+/*
 Cookies:
     1. Har bitta request'ga yopishib oladi
     2. O'zini-o'zi destroy qila oladi
