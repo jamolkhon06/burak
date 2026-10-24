@@ -1,7 +1,25 @@
+// Task-Y
+// Shunday function yozing, uni 2'ta array parametri bo'lsin. Bu function ikkala arrayda ham ishtirok etgan bir xil qiymatlarni yagona arrayga joylab qaytarsin. MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3] Yuqoridagi misolda, argument sifatida berilayotgan array'larda o'xshash sonlar mavjud. Function'ning vazifasi esa ana shu ikkala array'da ishtirok etgan o'xshash sonlarni yagona arrayga joylab return qilmoqda.
+
+function findIntersection(arr1: number[], arr2: number[]): number[] {
+    let newArr: number[] = [];
+    arr1.forEach(item1 => {
+        for(let item2 of arr2) {
+            if(item1 === item2) {
+                newArr.push(item1)
+            }
+        }
+    });
+    return newArr;
+}
+const result = findIntersection([1,2,3], [3,2,0]);
+console.log(result);
+
+
 // Task-X
 // Shunday function yozing, uni object va string parametrlari bo'lsin. Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri necha marotaba takrorlanganlini sanab qaytarsin. Eslatma => Nested object'lar ham sanalsin MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2 Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.Funktsiya, shu ikkinchi argument 'model', birinchi argument object tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
 
-function countOccurrences(obj: any, key: string) {
+/* function countOccurrences(obj: any, key: string) {
   let count = 0;
 
   for (let k in obj) {
@@ -15,7 +33,7 @@ function countOccurrences(obj: any, key: string) {
   return count;
 }
 const result = countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model');
-console.log(result)
+console.log(result) */
 
 
 // Task-W
