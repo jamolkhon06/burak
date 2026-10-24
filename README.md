@@ -83,7 +83,7 @@ MONGO_URI=your_mongodb_connection_string
 Check `package.json` for the available scripts.
 
 ```bash
-npm run
+npm run start:dev
 ```
 
 Run the appropriate development or build script listed in the output.
