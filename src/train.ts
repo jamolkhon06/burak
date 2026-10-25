@@ -1,7 +1,29 @@
+// Task-Z
+// Shunday function yozing. Bu function sonlardan iborat array qabul qilsin. Function'ning vazifasi array tarkibidagi juft sonlarni topib ularni yig'disini qaytarsin. MASALAN: sumEvens([1, 2, 3]); return 2; sumEvens([1, 2, 3, 2]); return 4; Yuqoridagi misolda, bizning funktsiya berilayotgan array tarkibidagi sonlar ichidan faqatgina juft bo'lgan sonlarni topib, ularni hisoblab yig'indisini qaytarmoqda.
+function sumEvens(arr: number[]): number {
+    let newArr: number[] = [];
+    let sum: number = 0;
+
+    arr.forEach(num => {
+        if(num % 2 == 0) {
+            newArr.push(num)
+        }
+    })
+
+    for(let num of newArr) {
+        sum += num
+    }
+
+    return sum
+}
+const result = sumEvens([1, 2, 3, 2]);
+console.log(result);
+
+
 // Task-Y
 // Shunday function yozing, uni 2'ta array parametri bo'lsin. Bu function ikkala arrayda ham ishtirok etgan bir xil qiymatlarni yagona arrayga joylab qaytarsin. MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3] Yuqoridagi misolda, argument sifatida berilayotgan array'larda o'xshash sonlar mavjud. Function'ning vazifasi esa ana shu ikkala array'da ishtirok etgan o'xshash sonlarni yagona arrayga joylab return qilmoqda.
 
-function findIntersection(arr1: number[], arr2: number[]): number[] {
+/* function findIntersection(arr1: number[], arr2: number[]): number[] {
     let newArr: number[] = [];
     arr1.forEach(item1 => {
         for(let item2 of arr2) {
@@ -13,7 +35,7 @@ function findIntersection(arr1: number[], arr2: number[]): number[] {
     return newArr;
 }
 const result = findIntersection([1,2,3], [3,2,0]);
-console.log(result);
+console.log(result); */
 
 
 // Task-X
