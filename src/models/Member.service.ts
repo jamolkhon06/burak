@@ -55,7 +55,7 @@ class MemberService {
       )
       .exec(); // second argument is a projection;; it asks the query to return only memberNick and memberPassword.
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
-    else if (member.MemberStatus === MemberStatus.BLOCK) {
+    else if (member.memberStatus === MemberStatus.BLOCK) {
       throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
     }
 
