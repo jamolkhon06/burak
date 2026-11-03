@@ -46,11 +46,11 @@ app.use((req, res, next) => {
 });
 
 // 3. Views
+// BSSR: ejs
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // 4. Routers
-// BSSR: ejs
 app.use("/admin", routerAdmin); // BSSR
 app.use("/", router); // SPA
 
