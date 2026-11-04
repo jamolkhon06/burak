@@ -7,11 +7,9 @@ import {
   ProductInquiry,
   ProductUpdateInput,
 } from "../libs/types/product";
-// Product describes a product returned from the database.
-// ProductInput describes data for creating a product.
-// ProductUpdateInput describes data for updating a product.
 import ProductModel from "../schema/Product.model";
 import { ProductStatus } from "../libs/enums/product.enum";
+import { ObjectId } from "mongoose";
 
 class ProductService {
   private readonly productModel;
@@ -23,6 +21,7 @@ class ProductService {
   /* SPA */
   public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
     const match: T = { productStatus: ProductStatus.PROCESS };
+
     if (inquiry.productCollection)
       match.productCollection = inquiry.productCollection;
     if (inquiry.search) {
@@ -43,6 +42,26 @@ class ProductService {
       ])
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    return result;
+  }
+
+  public async getProduct(
+    memberId: ObjectId | null,
+    id: string,
+  ): Promise<Product> {
+    const productId = shapeIntoMongooseObjectId(id);
+
+    let result = await this.productModel
+      .findOne({
+        _id: productId,
+        productStatus: ProductStatus.PROCESS,
+      })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    // TODO: If authenticated users => first => view log creation
+
     return result;
   }
 
