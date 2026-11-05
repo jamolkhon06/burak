@@ -56,6 +56,9 @@ class ProductService {
     return result;
   }
 
+  // Filter determines which documents you want to retrieve.
+  // Sort determines in what order those documents should appear.
+
   public async getProduct(
     memberId: ObjectId | null,
     id: string,
