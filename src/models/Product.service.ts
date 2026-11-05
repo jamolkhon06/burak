@@ -35,8 +35,8 @@ class ProductService {
 
     const sort: T =
       inquiry.order === "productPrice"
-        ? { [inquiry.page]: 1 }
-        : { [inquiry.page]: -1 };
+        ? { [inquiry.order]: 1 } // ascending order | computed property name. It dynamically uses the value of inquiry.page as the object's key.
+        : { [inquiry.order]: -1 }; // descending order
 
     const result = await this.productModel
       .aggregate([
@@ -46,6 +46,11 @@ class ProductService {
         { $limit: inquiry.limit * 1 }, // 3 => 4, 5, 6
       ])
       .exec();
+    // The aggregation pipeline executes four stages in order:
+    // 1. Filters documents based on specified conditions.
+    // 2. Sorts the filtered products.
+    // 3. Skips a certain number of documents.
+    // 4. Limits the number of returned documents.
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
     return result;
